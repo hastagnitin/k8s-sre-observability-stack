@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: sample-microservice-monitor
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: sample-microservice
+  endpoints:
+  - targetPort: 8080
+    path: /metrics
+    interval: 5s
